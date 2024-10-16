@@ -16,7 +16,7 @@
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
     "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main",
-    "homepage: "https://damilarey-mo.github.io/damilareymoshood"
+    "homepage": "https://damilarey-mo.github.io/damilareymoshood"
 
   },
   "dependencies": {
