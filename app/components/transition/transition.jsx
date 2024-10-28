@@ -5,7 +5,13 @@ import { useEffect, useRef, useState } from 'react';
  * A lightweight Framer Motion `AnimatePresence` implementation of
  * `react-transition-group` to be used for simple vanilla css transitions
  */
-export const Transition = ({ children, in: show, unmount, initial = true, ...props }) => {
+export const Transition = ({
+  children,
+  in: show,
+  unmount,
+  initial = true,
+  ...props
+}) => {
   const enterTimeout = useRef();
   const exitTimeout = useRef();
 
