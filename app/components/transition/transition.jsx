@@ -45,11 +45,11 @@ const TransitionContent = ({
   timeout = 0,
   enterTimeout,
   exitTimeout,
-  onEnter,
-  onEntered,
-  onExit,
-  onExited,
-  initial,
+  onEnter = () => {},
+  onEntered = () => {},
+  onExit = () => {},
+  onExited = () => {},
+  initial = false,
   nodeRef: defaultNodeRef,
   in: show,
 }) => {
@@ -63,44 +63,34 @@ const TransitionContent = ({
 
   useEffect(() => {
     if (hasEntered || !show) return;
-
     const actualTimeout = splitTimeout ? timeout.enter : timeout;
-
     clearTimeout(enterTimeout.current);
     clearTimeout(exitTimeout.current);
-
     setHasEntered(true);
     setStatus('entering');
-    onEnter?.();
-
+    onEnter();
     // Force reflow
     nodeRef.current?.offsetHeight;
-
     enterTimeout.current = setTimeout(() => {
       setStatus('entered');
-      onEntered?.();
+      onEntered();
     }, actualTimeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onEnter, onEntered, timeout, status, show]);
+  }, [hasEntered, onEnter, onEntered, timeout, show]);
 
   useEffect(() => {
     if (isPresent && show) return;
-
     const actualTimeout = splitTimeout ? timeout.exit : timeout;
-
     clearTimeout(enterTimeout.current);
     clearTimeout(exitTimeout.current);
-
     setStatus('exiting');
-    onExit?.();
-
+    onExit();
     // Force reflow
     nodeRef.current?.offsetHeight;
-
     exitTimeout.current = setTimeout(() => {
       setStatus('exited');
-      safeToRemove?.();
-      onExited?.();
+      safeToRemove();
+      onExited();
     }, actualTimeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPresent, onExit, safeToRemove, timeout, onExited, show]);
