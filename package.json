@@ -16,7 +16,6 @@
     "build:storybook": "storybook build",
     "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main",
     "homepage": "https://damilarey-mo.github.io/damilareymoshood"
-
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.515.0",
@@ -31,6 +30,7 @@
     "react-dom": "^18.2.0",
     "rehype-img-size": "^1.0.1",
     "rehype-slug": "^6.0.0",
+    "remix": "^2.13.1",
     "three": "^0.161.0",
     "three-stdlib": "^2.29.4"
   },
